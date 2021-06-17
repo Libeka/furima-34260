@@ -13,8 +13,8 @@
       フリマアプリです
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+      <%#= link_to image_tag("app-store.svg", class:"apple-btn") if message.image.attached? %>
+      <%#= link_to image_tag("google-play.png", class:"google-btn") if message.image.attached? %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
@@ -182,7 +182,7 @@
   </div>
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
+<%= link_to(new_product_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>

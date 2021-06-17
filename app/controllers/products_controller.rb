@@ -1,13 +1,31 @@
 class ProductsController < ApplicationController
-  #before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!,except: [:index, :show]
 
-def new
-end
+  def new
+    @product = Product.new
+  end
 
-private
+  def index
+    @products = Product.order("created_at DESC")
+  end
 
-  def message_params
-    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  def create
+    @product = Product.new(products_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+  end
+
+  private
+
+  def products_params
+    params.require(:product).permit(:item_name, :item_info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :item_price, :user_id, :image).merge(user_id: current_user.id)
   end
 
 end

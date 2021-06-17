@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'products/new'
-  #get 'home/index'
+  #get 'products/new'
   devise_for :users
-  #get 'messages/index'
   root to: "products#index"
+  resources :products, only: [:new, :create, :show ]
 
 end

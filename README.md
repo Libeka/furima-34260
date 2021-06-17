@@ -23,18 +23,18 @@
 
 ## products table (商品)
 
-| Column                 | Type       | Options                        |
-|------------------------|------------|--------------------------------|
-| image                  | string     | null: false                    |
-| product name           | string     | null: false                    |
-| product text           | string     | null: false                    |
-| categori_id            | integer    | null: false   foreign_key: true|
-| condition              | string     | null: false                    |
-| shipping_cost          | string     | null: false                    |
-| shipping_area          | string     | null: false                    |
-| shipping_days          | string     | null: false                    |
-| price                  | string     | null: false                    |
-| user_id                | integer    | null: false   foreign_key: true|
+| Column                    | Type       | Options                        |
+|---------------------------|------------|--------------------------------|
+| image                     | string     | null: false                    |
+| item_name                 | string     | null: false                    |
+| item_info                 | string     | null: false                    |
+| item_category             | integer    | null: false   foreign_key: true|
+| item_sales_status         | string     | null: false                    |
+| shipping_fee_status       | string     | null: false                    |
+| item_prefecture           | string     | null: false                    |
+| item_scheduled_delivery   | string     | null: false                    
+| item_price                | string     | null: false                    |
+| user_id                   | integer    | null: false   foreign_key: true|
 
 ### Association
 

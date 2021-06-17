@@ -1,7 +1,13 @@
 <%= render "shared/header" %>
 
+<%#<li>
+  <%#= link_to '詳細', product_path(product.id), method: :get %>
+<%#</li>
+
 <%# 商品の概要 %>
 <div class="item-show">
+  <%= link_to '詳細', product_path(product.id), method: :get %>
+  
   <div class="item-box">
     <h2 class="name">
       <%= "商品名" %>
