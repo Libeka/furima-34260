@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to :status
   has_one_attached :image
 
+
   validates :item_name, :item_info,:item_price, presence: true
 
 
