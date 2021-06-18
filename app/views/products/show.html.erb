@@ -6,14 +6,14 @@
 
 <%# 商品の概要 %>
 <div class="item-show">
-  <%= link_to '詳細', product_path(product.id), method: :get %>
   
+
   <div class="item-box">
     <h2 class="name">
       <%= "商品名" %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
+      <%= image_tag "item-sample.png" ,class:"item-box-img" if message.image.attached? %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -75,11 +75,11 @@
     </table>
     <div class="option">
       <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20" if message.image.attached?%>
         <span>お気に入り 0</span>
       </div>
       <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20" if message.image.attached?%>
         <span>不適切な商品の通報</span>
       </div>
     </div>
@@ -95,7 +95,7 @@
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
       <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25" %>
         <span>コメントする<span>
       </button>
     </form>

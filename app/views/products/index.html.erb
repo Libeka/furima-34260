@@ -130,7 +130,9 @@
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
-        <%= link_to "#" do %>
+      <%#詳細表示のための記述↓%>
+        <%= link_to product_path do %>
+        <% end %>
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
 
