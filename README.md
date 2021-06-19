@@ -26,14 +26,14 @@
 | Column                 | Type       | Options                        |
 |------------------------|------------|--------------------------------|
 | image                  | string     | null: false                    |
-| product name           | string     | null: false                    |
-| product text           | string     | null: false                    |
+| item_name              | string     | null: false                    |
+| item_info              | string     | null: false                    |
 | categori_id            | integer    | null: false   foreign_key: true|
-| condition              | string     | null: false                    |
-| shipping_cost          | string     | null: false                    |
-| shipping_area          | string     | null: false                    |
-| shipping_days          | string     | null: false                    |
-| price                  | string     | null: false                    |
+| status                 | integer    | null: false                    |
+| shipping_fee_status    | integer    | null: false                    |
+| prefecture             | integer    | null: false                    |
+| scheduled_delivery     | integer    | null: false                    |
+| price                  | integer    | null: false                    |
 | user_id                | integer    | null: false   foreign_key: true|
 
 ### Association
@@ -44,7 +44,7 @@
 - belongs_to :destination
 
 
-##  purchase record table (購入記録)
+ ##  purchase record table (購入記録) !
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
@@ -59,7 +59,7 @@
 
 
 
-## destination table (購入者情報)
+## destination table (購入者情報) !
 
 |Column          |Type      |Options                          |
 |--------------- |----------|---------------------------------|
