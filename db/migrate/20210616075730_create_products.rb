@@ -5,11 +5,12 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.text          :item_info                  ,null: false                    
       t.integer       :category_id                ,null: false   ,foreign_key: true
       t.integer       :status_id                  ,null: false                    
-      t.integer       :shipping_fee_id     ,null: false                    
+      t.integer       :shipping_fee_status_id     ,null: false                    
       t.integer       :prefecture_id              ,null: false                    
       t.integer       :scheduled_delivery_id      ,null: false                    
       t.integer       :item_price                 ,null: false                    
       t.references    :user                       ,null: false   ,foreign_key: true
+      t.timestamps
     end
   end
  end
