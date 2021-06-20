@@ -30,27 +30,27 @@
 | prefecture_id          | integer    | null: false                    |
 | scheduled_delivery_id  | integer    | null: false                    |
 | price                  | integer    | null: false                    |
-| user_id                | integer    | null: false,   foreign_key: true|
+| user_id                | references | null: false,  foreign_key: true|
 
 ### Association
 
-- belongs_to :user dependent
-- has_many :image dependent
-- has_one :destination
+- belongs_to :user 
+- has_one :purchase_record
+
 
 
  ##  purchase_records table (購入記録) 
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| user        | references | foreign_key: true |
-| product_id  | integer    | null: false       |
+| user_id     | references | foreign_key: true |
+| product_id  | references | null: false       |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :destination
-- belong_to :products
+- has_one :destination
+- belong_to :product
 
 
 
@@ -58,7 +58,7 @@
 
 |Column                       |Type         |Options                          |
 |---------------------------- |-------------|---------------------------------|
-| prefecture_id               | integer      | null false                      |
+| prefecture_id               | references  | null false                      |
 | city                        | string      | null false                      |
 | address                     | string      | null false                      |
 | building_name               | string      |                                 |
@@ -67,4 +67,4 @@
 
 
 ### Association
-- belongs_to :purchase record
+- belongs_to :purchase_record
