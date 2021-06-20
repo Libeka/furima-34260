@@ -64,7 +64,7 @@
 | building_name               | string      |                                 |
 | phone_number                | string      | null false                      |
 | purchase_record             | references  | null false, foreign_key: true   |
-
+| zip_code                    | string      | null false                      |
 
 ### Association
 - belongs_to :purchase_record
