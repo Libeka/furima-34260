@@ -30,7 +30,7 @@
 | prefecture_id          | integer    | null: false                    |
 | scheduled_delivery_id  | integer    | null: false                    |
 | price                  | integer    | null: false                    |
-| user_id                | references | null: false,  foreign_key: true|
+| user                   | references | null: false,  foreign_key: true|
 
 ### Association
 
@@ -43,8 +43,8 @@
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| user_id     | references | foreign_key: true |
-| product_id  | references | null: false       |
+| user        | references | foreign_key: true |
+| product     | references | null: false       |
 
 ### Association
 
@@ -54,16 +54,16 @@
 
 
 
-## destination_tables (住所テーブル) 
+## destinations tables (住所テーブル) 
 
 |Column                       |Type         |Options                          |
 |---------------------------- |-------------|---------------------------------|
-| prefecture_id               | references  | null false                      |
+| prefecture_id               | integer     | null: false                     |
 | city                        | string      | null false                      |
 | address                     | string      | null false                      |
 | building_name               | string      |                                 |
 | phone_number                | string      | null false                      |
-| purchase_record             | string      | null false,  foreign_key: true   |
+| purchase_record             | string      | foreign_key: true               |
 
 
 ### Association
