@@ -15,9 +15,8 @@
 
 ### Association
 
-* belongs_to :destination dependent
-* belongs_to :card dependent
 - has_many :purchase_records
+- has_many :products
 
 ## products table (商品)
 
@@ -45,7 +44,7 @@
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
 | user        | references | foreign_key: true |
-| prefecture_id  | integer    | null: false      |
+| product_id  | integer    | null: false       |
 
 ### Association
 
@@ -59,7 +58,7 @@
 
 |Column                       |Type         |Options                          |
 |---------------------------- |-------------|---------------------------------|
-| destinations_prefecture     | string      | null false                      |
+| prefecture_id               | integer      | null false                      |
 | city                        | string      | null false                      |
 | address                     | string      | null false                      |
 | building_name               | string      |                                 |
@@ -68,4 +67,4 @@
 
 
 ### Association
-- has_one :purchase record
+- belongs_to :purchase record
