@@ -1,24 +1,70 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table (出品者)
 
-Things you may want to cover:
+| Column             | Type                |Options                    |
+|--------------------|---------------------|---------------------------|
+| email              | string              | unique: true  null:false  |
+| encrypted_password | string              | null: false               |
+| nikname            | string              | null: false               |
+| family_name        | string              | null: false               |
+| first_name         | string              | null: false               |
+| family_name_kana   | string              | null: false               |
+| first_name_kana    | string              | null: false               |
+| birth_date         | date                | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :purchase_records
+- has_many :products
 
-* Configuration
+## products table (商品)
 
-* Database creation
+| Column                 | Type       | Options                         |
+|------------------------|------------|---------------------------------|
+| item_name              | string     | null: false                     |
+| item_info              | text       | null: false                     |
+| category_id            | integer    | null: false                     |
+| status_id              | integer    | null: false                     |
+| shipping_fee_status_id | integer    | null: false                     |
+| prefecture_id          | integer    | null: false                     |
+| scheduled_delivery_id  | integer    | null: false                     |
+| price                  | integer    | null: false                     |
+| user                   | references | null: false,  foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user 
+- has_one :purchase_record
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+ ##  purchase_records table (購入記録) 
+
+| Column      | Type       | Options                       |
+|-------------|------------|-------------------------------|
+| user        | references | null: false,foreign_key: true |
+| product     | references | null: false,foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_one :destination
+- belongs_to :product
+
+
+
+## destinations table (住所テーブル) 
+
+|Column                       |Type         |Options                          |
+|---------------------------- |-------------|---------------------------------|
+| prefecture_id               | integer     | null: false                     |
+| city                        | string      | null: false                     |
+| address                     | string      | null: false                     |
+| building_name               | string      |                                 |
+| phone_number                | string      | null: false                     |
+| purchase_record             | references  | null: false, foreign_key: true  |
+| zip_code                    | string      | null :false                     |
+
+### Association
+- belongs_to :purchase_record
