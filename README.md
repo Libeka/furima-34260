@@ -43,7 +43,7 @@
 
 | Column      | Type       | Options                       |
 |-------------|------------|-------------------------------|
-| user        | references | foreign_key: true             |
+| user        | references | null: false,foreign_key: true |
 | product     | references | null: false,foreign_key: true |
 
 ### Association
@@ -54,7 +54,7 @@
 
 
 
-## destinations tables (住所テーブル) 
+## destinations table (住所テーブル) 
 
 |Column                       |Type         |Options                          |
 |---------------------------- |-------------|---------------------------------|
