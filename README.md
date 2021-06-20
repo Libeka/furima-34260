@@ -41,16 +41,16 @@
 
  ##  purchase_records table (購入記録) 
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| user        | references | foreign_key: true |
-| product     | references | null: false       |
+| Column      | Type       | Options                       |
+|-------------|------------|-------------------------------|
+| user        | references | foreign_key: true             |
+| product     | references | null: false,foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :destination
-- belong_to :product
+- belongs_to :product
 
 
 
@@ -59,11 +59,11 @@
 |Column                       |Type         |Options                          |
 |---------------------------- |-------------|---------------------------------|
 | prefecture_id               | integer     | null: false                     |
-| city                        | string      | null false                      |
-| address                     | string      | null false                      |
+| city                        | string      | null: false                     |
+| address                     | string      | null: false                     |
 | building_name               | string      |                                 |
 | phone_number                | string      | null false                      |
-| purchase_record             | references  | foreign_key: true               |
+| purchase_record             | references  | null false, foreign_key: true   |
 
 
 ### Association
