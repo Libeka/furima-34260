@@ -20,17 +20,17 @@
 
 ## products table (商品)
 
-| Column                 | Type       | Options                        |
-|------------------------|------------|--------------------------------|
-| item_name              | string     | null: false                    |
-| item_info              | text       | null: false                    |
-| category_id            | integer    | null: false                    |
-| status_id              | integer    | null: false                    |
-| shipping_fee_status_id | integer    | null: false                    |
-| prefecture_id          | integer    | null: false                    |
-| scheduled_delivery_id  | integer    | null: false                    |
-| price                  | integer    | null: false                    |
-| user                   | references | null: false,  foreign_key: true|
+| Column                 | Type       | Options                         |
+|------------------------|------------|---------------------------------|
+| item_name              | string     | null: false                     |
+| item_info              | text       | null: false                     |
+| category_id            | integer    | null: false                     |
+| status_id              | integer    | null: false                     |
+| shipping_fee_status_id | integer    | null: false                     |
+| prefecture_id          | integer    | null: false                     |
+| scheduled_delivery_id  | integer    | null: false                     |
+| price                  | integer    | null: false                     |
+| user                   | references | null: false,  foreign_key: true |
 
 ### Association
 
@@ -63,7 +63,7 @@
 | address                     | string      | null false                      |
 | building_name               | string      |                                 |
 | phone_number                | string      | null false                      |
-| purchase_record             | string      | foreign_key: true               |
+| purchase_record             | references  | foreign_key: true               |
 
 
 ### Association
