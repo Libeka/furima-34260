@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'home/index'
+
   devise_for :users
-  get 'messages/index'
-  root to: "messages#index"
+  root to: "products#index"
+  resources :products, only: [:new, :create, :show, :index ]
 
 end
