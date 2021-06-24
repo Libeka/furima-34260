@@ -20,6 +20,13 @@ require 'rails_helper'
           @user.password_confirmation = "000000"
           expect(@user).to be_valid
         end
+
+        it 'passwordとpassword_confirmationが不一致では登録できないこと' do
+          @user.password = '123456'
+          @user.password_confirmation = '1234567'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        end
       end
 
       context '新規登録がうまくいかないとき' do
