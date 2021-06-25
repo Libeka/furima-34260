@@ -18,8 +18,6 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, { with: PASSWORD_REGEX, message: 'Passwordには英字と数字の両方を含めて設定してください' } 
 
-  # 半角英字数字のみ許可する
-  validates :nickname, format: {with: /\A[a-z0-9]+\z/i, message: '全角では登録できない'}
 
 end
 
