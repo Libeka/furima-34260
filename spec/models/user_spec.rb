@@ -8,7 +8,7 @@ require 'rails_helper'
   
     describe 'ユーザー新規登録' do
       context '新規登録がうまくいくとき' do
-        it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
+        it "全てのデータが正常であれば登録できる" do
           expect(@user).to be_valid
         end
         it "nicknameが6文字以下で登録できる" do
