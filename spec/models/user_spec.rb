@@ -38,11 +38,18 @@ require 'rails_helper'
           @user.valid?
           expect(@user.errors.full_messages).to include("First name can't be blank", "First name 全角文字を使用してください")
         end
-        it "emailが空では登録できない" do
-          @user.email = ''
+        it '苗字が全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
+          @user.last_name = 'hoge'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Email can't be blank")
+          expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
         end
+  
+        it '名前が全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
+          @user.first_name = 'huga'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
+        end
+
         it "ユーザー本名は苗字のふりがなが空では登録できない" do
           @user.last_name_kana = ''
           @user.valid?
@@ -53,6 +60,21 @@ require 'rails_helper'
           @user.valid?
           expect(@user.errors.full_messages).to include("First name kana can't be blank", "First name kana 全角(カタカナ)を使用してください")
         end
+        it '苗字のふりがなが全角カタカナでなければ登録できない' do
+          @user.last_name_kana = 'あああああ'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Last name kana 全角(カタカナ)を使用してください")
+        end
+        it '名前のふりがなが全角カタカナでなければ登録できない' do
+          @user.first_name_kana = 'あああああ'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('First name kana 全角(カタカナ)を使用してください')
+        end
+        it "emailが空では登録できない" do
+          @user.email = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Email can't be blank")
+        end
         it "重複したemailが存在する場合登録できない" do
           @user.save
           another_user = FactoryBot.build(:user)
@@ -60,6 +82,12 @@ require 'rails_helper'
           another_user.valid?
           expect(another_user.errors.full_messages).to include('Email has already been taken')
         end
+
+        it 'emailに@が含まれていない場合登録できない' do # 該当箇所
+          @user.email = 'hogehuga.com'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Email is invalid')
+        end  
 
         it "生年月日が空では登録できない" do
           @user.birth_day = ''
