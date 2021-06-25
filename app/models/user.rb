@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, :birth_day, presence: true
-  #validates :last_name, :first_name
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
     validates :first_name
     validates :last_name
@@ -15,6 +14,12 @@ class User < ApplicationRecord
   validates :last_name_kana
     validates :first_name_kana
   end
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, { with: PASSWORD_REGEX, message: 'Passwordには英字と数字の両方を含めて設定してください' } 
+
+  # 半角英字数字のみ許可する
+  validates :nickname, format: {with: /\A[a-z0-9]+\z/i, message: '全角では登録できない'}
 
 end
 

@@ -16,16 +16,30 @@ require 'rails_helper'
           expect(@user).to be_valid
         end
         it "passwordが6文字以上であれば登録できる" do
-          @user.password = "000000"
-          @user.password_confirmation = "000000"
+          @user.password = "aaa000"
+          @user.password_confirmation = "aaa000"
           expect(@user).to be_valid
         end
 
         it 'passwordとpassword_confirmationが不一致では登録できないこと' do
-          @user.password = '123456'
-          @user.password_confirmation = '1234567'
+          @user.password = '123aaa'
+          @user.password_confirmation = '1234aa'
           @user.valid?
           expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        end
+
+        it 'passwordは半角英語,半角数字のみでは登録できない' do
+          @user.password = '111111'
+          @user.password_confirmation = '111111'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password Passwordには英字と数字の両方を含めて設定してください")
+        end
+
+        it 'passwordは全角では登録できない' do
+          @user.password = '111111'
+          @user.password_confirmation = '111111'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password Passwordには英字と数字の両方を含めて設定してください")
         end
       end
 
