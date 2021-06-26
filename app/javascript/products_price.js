@@ -1,5 +1,5 @@
 window.addEventListener('load', () =>{
-  console.log("ok")
+
   const priceInput = document.getElementById("item-price");
   
   const addTaxDom = document.getElementById("add-tax-price");
@@ -16,23 +16,7 @@ window.addEventListener('load', () =>{
   })
   
   
-  //priceInput.addEventListener("input", () => {
-  //const priceInput = document.getElementById("add-tax-price");
-  //console.log("イベント発火")
-  //})
-  
-  //priceInput.addEventListener("input", () => {
-  //const priceInput = document.getElementById("profit");
-  //console.log("イベント発火")
-  //})
+ 
   })
   
-  //priceInput.addEventListener('load', function(){
-  //const priceInput = document.getElementById("add-tax-price");
-  //console.log("イベント発火")
-  //});
-  //priceInput.addEventListener('', function(){
-  //const priceInput = document.getElementById("add-tax-price");
-  //priceInput.addEventListener("input", () => {
-  //})
-  //const priceInput = document.getElementById("profit");
+ 
