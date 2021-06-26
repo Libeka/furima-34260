@@ -5,27 +5,63 @@ RSpec.describe Product, type: :model do
     # ↓ 1つ前の問題で設定したインスタンスを生成する
     @product = FactoryBot.build(:product)
   end
-  
-    describe '商品出品' do
-      it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できること' do
+
+  describe '商品出品' do
+    #context '商品出品がうまくいくとき' do
+      it 'ログイン状態のユーザーのみ、商品出品ページへ遷移できること' do
       end
   
-      it 'nicknameが空では登録できないこと' do
+      it 'ログアウト状態のユーザーは、商品出品ページへ遷移しようとすると、ログインページへ遷移すること' do
       end
   
-      it 'emailが空では登録できないこと' do
+      it '商品画像を1枚つけることが必須であること' do
       end
   
-      it '重複したemailが存在する場合登録できないこと' do
+      it '商品名が必須であること' do
       end
   
-      it 'passwordが空では登録できないこと' do
+      it '商品の説明が必須であること' do
       end
   
-      it 'passwordが5文字以下であれば登録できないこと' do
+      it 'カテゴリーの情報が必須であること' do
       end
   
-      it 'passwordが存在してもpassword_confirmationが空では登録できないこと' do
+      it '商品の状態についての情報が必須であること' do
       end
+
+      it '配送料の負担についての情報が必須であること' do
+      end
+
+      it '発送元の地域についての情報が必須であること' do
+      end
+
+      it '発送までの日数についての情報が必須であること' do
+      end
+
+      it '販売価格についての情報が必須であること' do
+      end
+
+      it '販売価格は、¥300~¥9,999,999の間のみ保存可能であること' do
+      end
+
+      it '販売価格は半角数字のみ保存可能であること' do
+      end
+
+      it '入力された販売価格によって、販売手数料や販売利益の表示が変わること' do
+      end
+
+      it '必要な情報を適切に入力すると、商品情報がデータベースに保存されること' do
+      end
+
+      it 'エラーハンドリングができていること（入力に問題がある状態で「出品する」ボタンが押された場合、情報は保存されず、出品ページに戻りエラーメッセージが表示されること）' do
+      end
+
+      it 'エラーハンドリングの際、1つのエラーに対して同じエラーメッセージが重複して表示されないこと' do
+      end
+    #end
+
+    #context '商品出品がうまくいかないとき' do
+    #end
+
   end
 end
