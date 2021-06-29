@@ -5,6 +5,7 @@ belongs_to :prefecture
 belongs_to :scheduled_delivery
 belongs_to :shipping_fee_status
 belongs_to :status
+belongs_to :user
 has_one_attached :image
 
 

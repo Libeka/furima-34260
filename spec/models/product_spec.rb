@@ -19,22 +19,6 @@ RSpec.describe Product, type: :model do
       it '商品画像を1枚つけることが必須であること' do
         expect(@product).to be_valid
       end
-  
-      it 'カテゴリーの情報が必須であること' do
-        expect(@product).to be_valid
-      end
-
-      it '販売価格は、¥300~¥9,999,999の間のみ保存可能であること' do
-        expect(@product).to be_valid
-      end
-
-      it '販売価格は半角数字のみ保存可能であること' do
-        expect(@product).to be_valid
-      end
-
-      it '入力された販売価格によって、販売手数料や販売利益の表示が変わること' do
-        expect(@product).to be_valid
-      end
 
       it '必要な情報を適切に入力すると、商品情報がデータベースに保存されること' do
         expect(@product).to be_valid
@@ -87,13 +71,31 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Scheduled delivery is not a number")
       end
 
+      it "カテゴリーが空だと登録できない" do
+        @product.category_id = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category is not a number")
+      end
+
       it "販売価格が空だと登録できない" do
         @product.item_price = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
-      it "販売価格が空だと登録できない" do
+      it "販売価格は、¥300~¥9,999,999の間のみ保存可能であること" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
+      it "販売価格は半角数字のみ保存可能であること" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
+      it "入力された販売価格によって、販売手数料や販売利益の表示が変わること" do
         @product.item_price = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
