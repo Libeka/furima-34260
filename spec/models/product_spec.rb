@@ -89,6 +89,18 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
+      it "販売価格が299円以下だと登録できないこと" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
+      it "販売価格が10,000,000円以上だと登録できないこと" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
       it "販売価格は半角数字のみ保存可能であること" do
         @product.item_price = ''
         @product.valid?
