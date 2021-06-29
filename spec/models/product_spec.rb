@@ -57,32 +57,32 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Image can't be blank")
       end
 
-      it "商品の状態が空だと登録できない" do
-        @product.status_id = ''
+      it "商品の状態が--を選択していると登録できない" do
+        @product.status_id = "--"
         @product.valid?
         expect(@product.errors.full_messages).to include("Status is not a number")
       end
 
-      it "配送料の負担が空だと登録できない" do
-        @product.shipping_fee_status_id = ''
+      it "配送料の負担が--を選択していると登録できない" do
+        @product.shipping_fee_status_id = "--"
         @product.valid?
         expect(@product.errors.full_messages).to include("Shipping fee status is not a number")
       end
 
-      it "発送元の地域が空だと登録できない" do
-        @product.prefecture_id = ''
+      it "発送元の地域が--を選択していると登録できない" do
+        @product.prefecture_id = "--"
         @product.valid?
         expect(@product.errors.full_messages).to include("Prefecture is not a number")
       end
 
-      it "発送までの日数がからだと登録できない" do
-        @product.scheduled_delivery_id = ''
+      it "発送までの日数が--を選択していると登録できない" do
+        @product.scheduled_delivery_id = "--"
         @product.valid?
         expect(@product.errors.full_messages).to include("Scheduled delivery is not a number")
       end
 
-      it "カテゴリーが空だと登録できない" do
-        @product.category_id = ''
+      it "カテゴリーが--を選択していると登録できない" do
+        @product.category_id = "--"
         @product.valid?
         expect(@product.errors.full_messages).to include("Category is not a number")
       end
@@ -134,14 +134,6 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
-
-      it "商品の状態が空だと登録できない" do
-        @product.status_id = ''
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Status is not a number")
-      end
-
-
     end
 
   end
