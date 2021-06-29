@@ -94,7 +94,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "販売価格は、¥300~¥9,999,999の間のみ保存可能であること" do
-        @product.item_price = ''
+        @product.item_price = :price_lteq, '299',:price_gteq, '10,000,000'
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
