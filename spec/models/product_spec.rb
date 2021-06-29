@@ -47,6 +47,12 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Item info can't be blank")
       end
 
+      it "商品の画像が空だと登録できない" do
+        @product.item_info = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item info can't be blank")
+      end
+
       it "商品の状態が空だと登録できない" do
         @product.status_id = ''
         @product.valid?
@@ -101,13 +107,25 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
-      it "販売価格は半角数字のみ保存可能であること" do
+      it "入力された販売価格によって、販売手数料や販売利益の表示が変わること" do
         @product.item_price = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
-      it "入力された販売価格によって、販売手数料や販売利益の表示が変わること" do
+      it "販売価格が半角英字のみだと登録できないこと" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
+      it "販売価格が半角英数字混合だと登録できないこと" do
+        @product.item_price = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Item price can't be blank")
+      end
+
+      it "販売価格が全角数字だと登録できないこと" do
         @product.item_price = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
