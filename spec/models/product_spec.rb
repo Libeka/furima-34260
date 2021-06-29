@@ -48,9 +48,13 @@ RSpec.describe Product, type: :model do
       end
 
       it "商品の画像が空だと登録できない" do
-        @product.item_info = ''
+        #@product.item_info = 'nil'
+        #@product.valid?
+        #expect(@product.errors.full_messages).to include("Item info can't be blank")
+
+        @product.image = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item info can't be blank")
+        expect(@product.errors.full_messages).to include("Image can't be blank")
       end
 
       it "商品の状態が空だと登録できない" do
@@ -96,13 +100,13 @@ RSpec.describe Product, type: :model do
       end
 
       it "販売価格が299円以下だと登録できないこと" do
-        @product.item_price = ''
+        @product.item_price = :price_lteq, '299'
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
       it "販売価格が10,000,000円以上だと登録できないこと" do
-        @product.item_price = ''
+        @product.item_price = :price_gteq, '10,000,000'
         @product.valid?
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
