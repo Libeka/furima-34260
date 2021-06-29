@@ -135,6 +135,13 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
+      it "商品の状態が空だと登録できない" do
+        @product.status_id = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Status is not a number")
+      end
+
+
     end
 
   end
