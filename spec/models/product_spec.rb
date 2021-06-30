@@ -35,9 +35,9 @@ RSpec.describe Product, type: :model do
       end
 
       it "商品の状態が--を選択していると登録できない" do
-        @product.status_id = "--"
+        @product.status_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Status is not a number")
+        expect(@product.errors.full_messages).to include("Status must be other than 1")
       end
 
       it "配送料の負担が--を選択していると登録できない" do
