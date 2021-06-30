@@ -12,6 +12,7 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
   
+    end
 
     context '商品出品がうまくいかないとき' do
 
