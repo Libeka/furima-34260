@@ -128,7 +128,7 @@
     </div>
     
     <ul class='item-lists'>
-    <%# @products.each do |product| %>
+    <% @products.each do |product| %>
       <li class='list'>
       <%# 詳細表示のための記述 ↓ %>
         <%= link_to '#' do %>
@@ -141,7 +141,7 @@
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-        <%# <%end%>
+        <%end%>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
