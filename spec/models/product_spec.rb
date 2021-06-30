@@ -59,9 +59,9 @@ RSpec.describe Product, type: :model do
       end
 
       it "カテゴリーが--を選択していると登録できない" do
-        @product.category_id = "--"
+        @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category is not a number")
+        expect(@product.errors.full_messages).to include("Category must be other than 1")
       end
 
       it "販売価格が空だと登録できない" do
@@ -70,46 +70,34 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Item price can't be blank")
       end
 
-      it "販売価格は¥300~¥9,999,999の間のみ保存可能であること" do
-        @product.item_price = :price_lteq, '299',:price_gteq, '10,000,000'
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
-      end
-
       it "販売価格が299円以下だと登録できないこと" do
-        @product.item_price = :price_lteq, '299'
+        @product.item_price = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
+        expect(@product.errors.full_messages).to include("Item price is not included in the list")
       end
 
       it "販売価格が10,000,000円以上だと登録できないこと" do
-        @product.item_price = :price_gteq, '10,000,000'
+        @product.item_price = 10000000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
-      end
-
-      it "入力された販売価格によって販売手数料や販売利益の表示が変わること" do
-        @product.item_price = ''
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
+        expect(@product.errors.full_messages).to include("Item price is not included in the list")
       end
 
       it "販売価格が半角英字のみだと登録できないこと" do
-        @product.item_price = ''
+        @product.item_price = "aaaa"
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
+        expect(@product.errors.full_messages).to include("Item price is not included in the list")
       end
 
       it "販売価格が半角英数字混合だと登録できないこと" do
-        @product.item_price = ''
+        @product.item_price = "aa11"
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
+        expect(@product.errors.full_messages).to include("Item price is not included in the list")
       end
 
       it "販売価格が全角数字だと登録できないこと" do
-        @product.item_price = ''
+        @product.item_price = "１１１１"
         @product.valid?
-        expect(@product.errors.full_messages).to include("Item price can't be blank")
+        expect(@product.errors.full_messages).to include("Item price is not included in the list")
       end
     end
 
