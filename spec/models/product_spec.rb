@@ -41,21 +41,21 @@ RSpec.describe Product, type: :model do
       end
 
       it "配送料の負担が--を選択していると登録できない" do
-        @product.shipping_fee_status_id = "--"
+        @product.shipping_fee_status_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping fee status is not a number")
+        expect(@product.errors.full_messages).to include("Shipping fee status must be other than 1")
       end
 
       it "発送元の地域が--を選択していると登録できない" do
-        @product.prefecture_id = "--"
+        @product.prefecture_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture is not a number")
+        expect(@product.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it "発送までの日数が--を選択していると登録できない" do
-        @product.scheduled_delivery_id = "--"
+        @product.scheduled_delivery_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Scheduled delivery is not a number")
+        expect(@product.errors.full_messages).to include("Scheduled delivery must be other than 1")
       end
 
       it "カテゴリーが--を選択していると登録できない" do
