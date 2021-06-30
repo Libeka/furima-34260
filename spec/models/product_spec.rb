@@ -8,30 +8,10 @@ RSpec.describe Product, type: :model do
 
   describe '商品出品' do
     context '商品出品がうまくいくとき' do
-      it 'ログイン状態のユーザーのみ、商品出品ページへ遷移できること' do
+      it 'すべての情報があれば登録できる' do
         expect(@product).to be_valid
       end
   
-      it 'ログアウト状態のユーザーは、商品出品ページへ遷移しようとすると、ログインページへ遷移すること' do
-        expect(@product).to be_valid
-      end
-  
-      it '商品画像を1枚つけることが必須であること' do
-        expect(@product).to be_valid
-      end
-
-      it '必要な情報を適切に入力すると、商品情報がデータベースに保存されること' do
-        expect(@product).to be_valid
-      end
-
-      it 'エラーハンドリングができていること（入力に問題がある状態で「出品する」ボタンが押された場合、情報は保存されず、出品ページに戻りエラーメッセージが表示されること）' do
-        expect(@product).to be_valid
-      end
-
-      it 'エラーハンドリングの際、1つのエラーに対して同じエラーメッセージが重複して表示されないこと' do
-        expect(@product).to be_valid
-      end
-    end
 
     context '商品出品がうまくいかないとき' do
 

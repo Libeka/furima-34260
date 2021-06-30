@@ -14,11 +14,6 @@ validates :item_name, :item_info,:item_price, :image, presence: true
 
 validates :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, numericality: { other_than: 1 }
 
-#validates :price,
-    #numericality: {
-      #greater_than_or_equal_to: 299,
-      #less_than: 10000000
-    #}
 
 validates_inclusion_of :item_price, in: 300..9999999
 end
