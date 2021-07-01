@@ -137,10 +137,13 @@
         <%= link_to '#' do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
+          
           <%# 商品購入機能実装の時⏬のコメントアウト外して！！%>
+          <%# <% if product.purchase.present? %> 
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+        <%# <%end%>
 
         </div>
         <div class='item-info'>
