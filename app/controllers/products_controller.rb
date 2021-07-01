@@ -22,8 +22,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # ↑ 詳細表示の時記述
-
   private
 
   def products_params

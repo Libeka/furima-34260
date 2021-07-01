@@ -13,8 +13,8 @@
       フリマアプリです
     </p>
     <div class='store-btn'>
-      <%#= link_to image_tag("app-store.svg", class:"apple-btn") if message.image.attached? %>
-      <%#= link_to image_tag("google-play.png", class:"google-btn") if message.image.attached? %>
+      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
@@ -133,10 +133,11 @@
     <ul class='item-lists'>
     <% @products.each do |product| %>
       <li class='list'>
+
       <%# 詳細表示のための記述 ↓ %>
         <%= link_to products_path do %>
         <div class='item-img-content'>
-          <%= image_tag product.image, class: "item-img" %>
+          <%= image_tag product.image, class: "item-img" if product.image.attached? %>
 
           <%# 商品購入機能実装の時⏬のコメントアウト外して！！%>
           <%# <% if product.purchase.present? %> 
