@@ -134,10 +134,10 @@
     <% @products.each do |product| %>
       <li class='list'>
       <%# 詳細表示のための記述 ↓ %>
-        <%= link_to '#' do %>
+        <%= link_to products_path do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
-          
+
           <%# 商品購入機能実装の時⏬のコメントアウト外して！！%>
           <%# <% if product.purchase.present? %> 
           <div class='sold-out'>
