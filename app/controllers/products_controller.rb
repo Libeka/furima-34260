@@ -3,6 +3,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    if user_signed_in?
+      @product = Product.new
+   else
+      redirect_to user_session_path(@item.id)
+   end
   end
 
   def index
