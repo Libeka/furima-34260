@@ -129,13 +129,14 @@
     </div>
 
 
-<% if @products.present?%>
+
     <ul class='item-lists'>
+    <% if @products.present?%>
     <% @products.each do |product| %>
       <li class='list'>
 
       <%# 詳細表示のための記述 ↓ %>
-        <%= link_to products_path do %>
+        <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" if product.image.attached? %>
 
@@ -159,9 +160,9 @@
             </div>
           </div>
         </div>
+        <%end%>
         </li>
       <% end%>
-    <% end%>
       
     <% else %>
       <li class='list'>
@@ -181,9 +182,10 @@
         </div>
         <% end %>
       </li>
+    <%end%>
     </ul>
   
-<% end%>
+<%# end%>
   </div>
   <%# /商品一覧 %>
 </div>
