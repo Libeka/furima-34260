@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
-  before_action :redirects_to,only:[:edit, :update]
+  before_action :redirects_to,only:[:edit, :update, :destroy]
 
   def new
     @product = Product.new
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
     if @product.destroy
       redirect_to root_path
     else
-      redirect_to root_path
+      render :show
     end
   end
 
