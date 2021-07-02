@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   before_action :set_product, only: [:edit, :show, :update]
+  #before_action :redirect_to root_path unless current_user.id == @product.user_id ,only:[:edit, :update]
 
   def new
     @product = Product.new
@@ -20,11 +21,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user.id == @product.user_id
   end
 
   def update
-    redirect_to root_path unless current_user.id == @product.user_id
     @product.update(products_params)
     if @product.save
       redirect_to product_path
