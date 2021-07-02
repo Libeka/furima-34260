@@ -13,8 +13,8 @@
       フリマアプリです
     </p>
     <div class='store-btn'>
-      <%#= link_to image_tag("app-store.svg", class:"apple-btn") if message.image.attached? %>
-      <%#= link_to image_tag("google-play.png", class:"google-btn") if message.image.attached? %>
+      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
@@ -129,18 +129,23 @@
     </div>
 
 
-<% if @products.present?%>
+
     <ul class='item-lists'>
+    <% if @products.present?%>
     <% @products.each do |product| %>
       <li class='list'>
+
       <%# 詳細表示のための記述 ↓ %>
-        <%= link_to '#' do %>
+        <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
-          <%= image_tag product.image, class: "item-img" %>
+          <%= image_tag product.image, class: "item-img" if product.image.attached? %>
+
           <%# 商品購入機能実装の時⏬のコメントアウト外して！！%>
+          <%# <% if product.purchase.present? %> 
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+        <%# <%end%>
 
         </div>
         <div class='item-info'>
@@ -148,16 +153,16 @@
             <%= product.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= product.item_price %>円<br><%= product.shipping_fee_status_id %></span>
+            <span><%= product.item_price %>円<br><%= product.shipping_fee_status.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
             </div>
           </div>
         </div>
+        <%end%>
         </li>
       <% end%>
-    <% end%>
       
     <% else %>
       <li class='list'>
@@ -177,9 +182,10 @@
         </div>
         <% end %>
       </li>
+    <%end%>
     </ul>
   
-<% end%>
+<%# end%>
   </div>
   <%# /商品一覧 %>
 </div>

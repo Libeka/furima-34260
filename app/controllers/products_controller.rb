@@ -18,11 +18,14 @@ class ProductsController < ApplicationController
     end
   end
 
-  #def show
+  def destroy
     #@product = Product.find(params[:id])
-  #end
+    #@product.destroy
+  end
 
-  # ↑ 詳細表示の時記述
+  def show
+    @product = Product.find(params[:id])
+  end
 
   private
 
