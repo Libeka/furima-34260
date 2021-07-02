@@ -34,14 +34,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  #def destroy
-    #@product = Product.find(params[:id])
-    #@product.destroy
-  #end
-  # ↑　商品情報削除機能の時記述
-
-
-
 
 
 
