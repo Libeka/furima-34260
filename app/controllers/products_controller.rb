@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
+  before_action :set_product, only: [:edit, :show, :update]
+  before_action :redirects_to,only:[:edit, :update]
 
   def new
     @product = Product.new
@@ -18,19 +20,38 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-    #@product = Product.find(params[:id])
-    #@product.destroy
+  def edit
+    
   end
 
+  def update
+    
+    @product.update(products_params)
+    if @product.save
+      redirect_to product_path
+    else
+      render :edit
+    end
+  end
+
+
+
+
   def show
-    @product = Product.find(params[:id])
   end
 
   private
 
   def products_params
     params.require(:product).permit(:item_name, :item_info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :item_price, :user_id, :image).merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def redirects_to
+    redirect_to root_path unless current_user.id == @product.user_id
   end
 
     
