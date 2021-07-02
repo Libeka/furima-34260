@@ -16,6 +16,11 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+
+    def edit
+      @product = Product.find(params[:id])
+    end
+    
   end
 
   #def show
