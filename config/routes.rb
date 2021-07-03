@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: "products#index"
-  resources :products
+  resources :products do
+    resources :purchase_record, only: :create
+  end
 
-  resources :cards, only:[:create]
 
 end
