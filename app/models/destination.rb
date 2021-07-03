@@ -1,8 +1,8 @@
 class Destination < ApplicationRecord
   include ActiveModel::Model
-  attr_accessor :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_recor, :zip_code
+  attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_recor, :zip_code
 
-  validates :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_recor, :zip_code, presence: true
+  validates :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_recor, :zip_code, presence: true
 
   belongs_to :purchase_record
 
