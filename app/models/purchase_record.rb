@@ -1,8 +1,5 @@
 class PurchaseRecord < ApplicationRecord
-  include ActiveModel::Model
-  attr_accessor :user, :product
-
-  validates :user_id, :product, presence: true
+ 
 
   belongs_to :user,optional: true
   belongs_to :product
