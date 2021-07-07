@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
   end
 
   def index
+        #created_atの後の:descはdescendingの略で降順という意味です。
+        # ⇩ これで生成されるPostは自動的に並び替えされるようになりました。
     @products = Product.all.order("created_at DESC")
   end
 
