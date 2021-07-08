@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-  params.require(:order_form).permit(:destination, :purchase_record, :postal_code, :prefecture_id, :city, :addresses, :phone_number)
+  params.require(:order_form).permit(:card_number, :card_exp_month, :card_exp_year, :card_cvc, :destination, :purchase_record, :postal_code, :prefecture_id, :city, :addresses, :phone_number)
   #params.require(:モデル名).permit(:キー名, :キー名)
   end
 
