@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   include ActiveModel::Model
-
-  before_action :set_product, only:[:create]
+  before_action :set_product, only: [:create, :index]
+  before_action :authenticate_user!,except: [:index]
+  #before_action :redirect_to, only:[:create, :index]
 
   def index
     #orders_controllerからorder/index.html.erbへ変数(@product)を代入
@@ -30,6 +31,10 @@ class OrdersController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def redirects_to
+    redirect_to root_path unless current_user.id == @order_form.user_id
   end
   
   end
