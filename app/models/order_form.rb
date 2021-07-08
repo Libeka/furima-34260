@@ -1,10 +1,11 @@
 class OrderForm < ApplicationRecord
   include ActiveModel::Model
-  attr_accessor :destination, :purchase_record
+  attr_accessor :destination, :purchase_record, :postal_code,:prefecture_id, :city, :addresses, :phone_number
 
-  validates :destination, presence: true
-  validates :purchase_record, presence: true
+  validates :destination,:purchase_record,:postal_code,:city,:addresses,:phone_number, presence: true
 
+  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
+  
 
   def save
     Destination.create(destination: destination)

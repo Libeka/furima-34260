@@ -6,6 +6,8 @@
       購入内容の確認
     </h1>
     <%# 購入内容の表示 %>
+    
+    <%# ↓ エラー文表示させる　%>
     <%= render 'shared/error_messages', model: @order_form %>
     <div class='buy-item-info'>
       <%= image_tag @product.image, class: 'buy-item-img' %>
