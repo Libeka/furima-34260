@@ -83,7 +83,7 @@ require 'rails_helper'
           expect(another_user.errors.full_messages).to include('Email has already been taken')
         end
 
-        it 'emailに@が含まれていない場合登録できない' do # 該当箇所
+        it 'emailに@が含まれていない場合登録できない' do 
           @user.email = 'hogehuga.com'
           @user.valid?
           expect(@user.errors.full_messages).to include('Email is invalid')

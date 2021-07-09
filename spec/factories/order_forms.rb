@@ -5,7 +5,7 @@ FactoryBot.define do
     purchase_record{"あ"}
     postal_code{"123-4567"}
     city{"あ"}
-    addresses{"あ"}
+    addresses{"1"}
     phone_number{"09012345678"}
     card_number{"1"}
     card_exp_month{"1"}
