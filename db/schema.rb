@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_110947) do
+ActiveRecord::Schema.define(version: 2021_07_03_061641) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -46,11 +46,6 @@ ActiveRecord::Schema.define(version: 2021_07_06_110947) do
     t.index ["purchase_record_id"], name: "index_destinations_on_purchase_record_id"
   end
 
-  create_table "order_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_name", null: false
     t.text "item_info", null: false
@@ -68,9 +63,10 @@ ActiveRecord::Schema.define(version: 2021_07_06_110947) do
 
   create_table "purchase_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "product", null: false
+    t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_purchase_records_on_product_id"
     t.index ["user_id"], name: "index_purchase_records_on_user_id"
   end
 
@@ -94,5 +90,6 @@ ActiveRecord::Schema.define(version: 2021_07_06_110947) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "products", "users"
+  add_foreign_key "purchase_records", "products"
   add_foreign_key "purchase_records", "users"
 end
