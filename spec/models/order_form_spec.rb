@@ -4,7 +4,6 @@ RSpec.describe OrderForm, type: :model do
   
   describe "商品購入機能" do
     before do
-      # ↓ 1つ前の問題で設定したインスタンスを生成する
       @order_form = FactoryBot.build(:order_form)
     end
 

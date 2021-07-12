@@ -9,11 +9,15 @@
     <div class="item-img-content">
       <%= image_tag @product.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
+      
+      <% if @product.present? %> 
       <div class="sold-out">
       <%# if '商品が購入済みである' %>
+      
         <span>Sold Out!!</span>
-      <%# end %>
+      
       </div>
+      <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">

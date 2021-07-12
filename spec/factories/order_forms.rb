@@ -11,6 +11,7 @@ FactoryBot.define do
     card_exp_month{"1"}
     card_exp_year{"1"}
     card_cvc{"1"}
+  
     
     prefecture_id{2}
     
