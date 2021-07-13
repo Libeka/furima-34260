@@ -26,41 +26,6 @@ RSpec.describe OrderForm, type: :model do
 
       context '商品購入がうまくいかないとき' do
         
-        # it "配送先が空だと登録できない" do
-        #   @order_form.destination = ''
-        #   @order_form.valid?
-        #   expect(@order_form.errors.full_messages).to include("Destination can't be blank")
-        # end
-
-        #it "購入情報が空だと登録できない" do
-          #@order_form.purchase_record = ''
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Purchase record can't be blank", "Purchase record can't be blank")
-        #end
-
-        #it "クレジットカード番号が空だと登録できない" do
-          #@order_form.card_number= ''
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Card number can't be blank")
-        #end
-
-        #it "有効期限(月)が空だと登録できない" do
-          #@order_form.card_exp_month= ''
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Card exp month can't be blank")
-        #end
-
-        #it "有効期限(年)が空だと登録できない" do
-          #@order_form.card_exp_year= ''
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Card exp year can't be blank")
-        #end
-
-        #it "セキュリティコードが空だと登録できない" do
-          #@order_form.card_cvc= ''
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Card cvc can't be blank")
-        #end
 
         it "郵便番号の保存にはハイフンが必要であること" do
           @order_form.zip_code= '1234567'
