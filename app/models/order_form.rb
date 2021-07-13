@@ -18,9 +18,12 @@ class OrderForm
     # 購入情報を保存
     purchase_record_id = PurchaseRecord.create(product_id: product_id, user_id: user_id)
     # 配送先の情報を保存
-    Destination.create(prefecture_id: prefecture_id, city: city, phone_number: phone_number, zip_code: zip_code, building_name: building_name, address: address, purchase_record_id: purchase_record_id )
+    Destination.create(prefecture_id: prefecture_id, city: city, phone_number: phone_number, zip_code: zip_code, building_name: building_name, address: address, purchase_record_id: purchase_record_id.id )
     
   end
+
+  #def destination
+  #end
 
 end
 
