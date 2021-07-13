@@ -141,11 +141,11 @@
           <%= image_tag product.image, class: "item-img" if product.image.attached? %>
 
           <%# 商品購入機能実装の時⏬のコメントアウト外して！！%>
-          <%# if product.order.present? %> 
+          <% if product.purchase_record.present? %> 
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%#end%>
+          <%end%>
 
         </div>
         <div class='item-info'>

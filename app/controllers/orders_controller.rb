@@ -1,12 +1,20 @@
 class OrdersController < ApplicationController
 
   before_action :set_product, only: [:create, :index]
-  before_action :authenticate_user!,except: [:index]
+  
+  before_action :authenticate_user!, only: [:create, :index]
+  before_action :redirects_to,only:[:create, :index]
+
 
   def index
     #routes.rbよりネストの記述を書いているため、親がresources :productsとあるため[:id]ではなく[:product_id]と書かなくてはいけない
     @product = Product.find(params[:product_id])
+    if @product.purchase_record.present? 
+      return redirect_to root_path
+    end
+
     @order_form = OrderForm.new
+    
   end
 
   def create
@@ -33,7 +41,9 @@ class OrdersController < ApplicationController
   end
 
   def redirects_to
-    redirect_to root_path unless current_user.id == @order_form.user_id
+    if current_user.id == @product.user_id
+      return redirect_to root_path
+   end
   end
 
   def pay_item
@@ -44,5 +54,7 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+  
   
   end
