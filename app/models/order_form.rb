@@ -12,7 +12,7 @@ class OrderForm
     validates :user_id
     validates_length_of :phone_number, maximum: 11
     validates :phone_number, numericality: true
-    validates :prefecture_id, presence: true, numericality: { other_than: 1 }
+    validates :prefecture_id, numericality: { other_than: 1 }
 
   end
 
