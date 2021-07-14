@@ -88,21 +88,6 @@ RSpec.describe OrderForm, type: :model do
           expect(@order_form.errors.full_messages).to include("Token can't be blank")
         end
 
-        
-
-        #it "ログイン状態の出品者でも、売却済みの商品に対しては「編集・削除ボタン」が表示されないこと" do
-          #@product.purchase_record.present? 
-          #@order_form.valid?
-          #expect(@order_form.errors.full_messages).to include("Token can't be blank")
-        #end
-
-        #it "redirects the page to /users/sign_in" do
-          #gets :index, params: {id: @order_form}
-          #expect(response).to redirect_to "/users/sign_in"
-        #end
-
-
-
 
       end
     end
