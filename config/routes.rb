@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "products#index"
   resources :products do
-    resources :orders, only: [:create, :index ,:new]
+    resources :orders, only: [:create, :index ]
   end
 
 
