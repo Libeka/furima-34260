@@ -8,6 +8,8 @@ class OrderForm
     validates :city
     validates :address
     validates :token
+    validates :product_id
+    validates :user_id
     validates_length_of :phone_number, maximum: 11
     validates :phone_number, numericality: true
     validates :prefecture_id, presence: true, numericality: { other_than: 1 }

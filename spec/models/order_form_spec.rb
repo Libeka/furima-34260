@@ -30,12 +30,30 @@ RSpec.describe OrderForm, type: :model do
   
 
       context '商品購入がうまくいかないとき' do
+
+        it "product_idが空では購入できないこと" do
+          @order_form.product_id= ''
+          @order_form.valid?
+          expect(@order_form.errors.full_messages).to include("Product can't be blank")
+        end
+
+        it "user_idが空では購入できないこと" do
+          @order_form.user_id= ''
+          @order_form.valid?
+          expect(@order_form.errors.full_messages).to include("User can't be blank")
+        end
         
 
         it "郵便番号の保存にはハイフンが必要であること" do
           @order_form.zip_code= '1234567'
           @order_form.valid?
           expect(@order_form.errors.full_messages).to include("Zip code is invalid. Include hyphen(-)")
+        end
+
+        it "郵便番号が空では購入できないこと" do
+          @order_form.zip_code= ''
+          @order_form.valid?
+          expect(@order_form.errors.full_messages).to include("Zip code can't be blank", "Zip code is invalid. Include hyphen(-)")
         end
 
         it "市区町村が空だと登録できない" do
