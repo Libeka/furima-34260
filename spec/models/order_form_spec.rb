@@ -49,7 +49,7 @@ RSpec.describe OrderForm, type: :model do
         it "郵便番号が空では購入できないこと" do
           @order_form.zip_code= ''
           @order_form.valid?
-          expect(@order_form.errors.full_messages).to include("Zip code can't be blank", "Zip code is invalid. Include hyphen(-)")
+          expect(@order_form.errors.full_messages).to include("Zip code can't be blank")
         end
 
         it "市区町村が空だと登録できない" do
