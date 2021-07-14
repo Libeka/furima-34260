@@ -20,6 +20,11 @@ RSpec.describe OrderForm, type: :model do
         it "tokenがあれば保存ができること" do
           expect(@order_form).to be_valid
         end
+
+        it '全ての値が正しく入力されていれば購入できること' do
+          @order_form.building_name=''
+          expect(@order_form).to be_valid
+        end
         
       end
   
@@ -51,6 +56,12 @@ RSpec.describe OrderForm, type: :model do
           expect(@order_form.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
         end
 
+        it "電話番号は英数混合では登録できないこと" do
+          @order_form.phone_number= 'abc12345678'
+          @order_form.valid?
+          expect(@order_form.errors.full_messages).to include("Phone number is not a number")
+        end
+
         it "都道府県が--を選択していると登録できない" do
           @order_form.prefecture_id = 1
           @order_form.valid?
@@ -64,6 +75,17 @@ RSpec.describe OrderForm, type: :model do
         end
 
         
+
+        #it "ログイン状態の出品者でも、売却済みの商品に対しては「編集・削除ボタン」が表示されないこと" do
+          #@product.purchase_record.present? 
+          #@order_form.valid?
+          #expect(@order_form.errors.full_messages).to include("Token can't be blank")
+        #end
+
+        #it "redirects the page to /users/sign_in" do
+          #gets :index, params: {id: @order_form}
+          #expect(response).to redirect_to "/users/sign_in"
+        #end
 
 
 

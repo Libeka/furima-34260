@@ -7,12 +7,6 @@ class OrdersController < ApplicationController
 
 
   def index
-    #routes.rbよりネストの記述を書いているため、親がresources :productsとあるため[:id]ではなく[:product_id]と書かなくてはいけない
-    @product = Product.find(params[:product_id])
-    if @product.purchase_record.present? 
-      return redirect_to root_path
-    end
-
     @order_form = OrderForm.new
     
   end
@@ -27,7 +21,7 @@ class OrdersController < ApplicationController
       render :index
     end
 
-   
+   # http://localhost:3000/products/8/orders
   end
 
   private
@@ -41,9 +35,10 @@ class OrdersController < ApplicationController
   end
 
   def redirects_to
-    if current_user.id == @product.user_id
-      return redirect_to root_path
-   end
+    if current_user.id == @product.user_id || @product.purchase_record.present?  
+      return redirect_to root_path 
+    end
+
   end
 
   def pay_item

@@ -1,6 +1,6 @@
 class OrderForm 
   include ActiveModel::Model
-  attr_accessor :zip_code,:prefecture_id, :city, :address, :phone_number, :token, :building_name, :product_id, :user_id, :purchase_record_id
+  attr_accessor :zip_code,:prefecture_id, :city, :address, :phone_number, :token, :building_name, :product_id, :user_id
 
   with_options presence: true do
     
@@ -9,9 +9,11 @@ class OrderForm
     validates :address
     validates :token
     validates_length_of :phone_number, maximum: 11
+    validates :phone_number, numericality: true
     validates :prefecture_id, presence: true, numericality: { other_than: 1 }
 
   end
+
 
   def save
 
@@ -22,8 +24,8 @@ class OrderForm
     
   end
 
-  #def destination
-  #end
+
+
 
 end
 
