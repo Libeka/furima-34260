@@ -21,13 +21,11 @@ class OrdersController < ApplicationController
       render :index
     end
 
-   # http://localhost:3000/products/8/orders
   end
 
   private
   def order_params
   params.require(:order_form).permit(:purchase_record_id, :zip_code, :prefecture_id, :city, :address, :phone_number, :building_name).merge(token: params[:token],user_id: current_user.id, product_id: params[:product_id])
-  #params.require(:モデル名).permit(:キー名, :キー名)
   end
 
   def set_product
@@ -44,9 +42,9 @@ class OrdersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @product.item_price,  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency: 'jpy'                 # 通貨の種類（日本円）
+      amount: @product.item_price,  
+      card: order_params[:token],    
+      currency: 'jpy'                
     )
   end
 
