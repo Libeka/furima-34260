@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 
-  before_action :set_product, only: [:create, :index]
+  before_action :set_product [:create, :index]
   
   before_action :authenticate_user!, only: [:create, :index]
-  before_action :redirects_to,only:[:create, :index]
+  before_action :redirects_to[:create, :index]
 
 
   def index
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-  params.require(:order_form).permit(:purchase_record_id, :zip_code, :prefecture_id, :city, :address, :phone_number, :building_name).merge(token: params[:token],user_id: current_user.id, product_id: params[:product_id])
+  params.require(:order_form).permit(:zip_code, :prefecture_id, :city, :address, :phone_number, :building_name).merge(token: params[:token],user_id: current_user.id, product_id: params[:product_id])
   end
 
   def set_product
