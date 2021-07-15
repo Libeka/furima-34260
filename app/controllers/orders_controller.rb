@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 
-  before_action :set_product [:create, :index]
+  before_action :set_product 
   
-  before_action :authenticate_user!, only: [:create, :index]
-  before_action :redirects_to[:create, :index]
+  before_action :authenticate_user!
+  before_action :redirects_to
 
 
   def index
