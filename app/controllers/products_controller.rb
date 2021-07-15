@@ -9,9 +9,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order("created_at DESC")
-    if @product.purchase_record.present?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -24,6 +21,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if @product.purchase_record.present?
+      redirect_to root_path
+    end
   end
 
   def update
